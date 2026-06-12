@@ -6,8 +6,8 @@ def draw_landmarks(frame, hand, width, height, result):
         x = int(landmark.x *width)
         y = int(landmark.y *height)
         cv.circle(frame, (x,y), 6, (0,255,0), -1)
-        cv.putText(frame, f"Hands: {len(result.hand_landmarks)}", (20,40), cv.FONT_HERSHEY_SIMPLEX,
-                   1, (0,255,0),2)
+        # cv.putText(frame, f"Hands: {len(result.hand_landmarks)}", (20,40), cv.FONT_HERSHEY_SIMPLEX,
+        #            1, (0,255,0),2)
         for start_Idx, end_Idx in Hand_connections:
             start = hand[start_Idx]
             end =hand[end_Idx]
@@ -16,3 +16,11 @@ def draw_landmarks(frame, hand, width, height, result):
             x2 = int(end.x *width)
             y2 = int(end.y *height)
             cv.line(frame,(x1,y1), (x2,y2), (255,0,0),2)
+
+
+def draw__info(frame, lines):
+    y = 40
+    for line in lines:
+        cv.putText(frame, line, (20,y), cv.FONT_HERSHEY_COMPLEX,1, (0,255,0),2)
+        y+=  40
+

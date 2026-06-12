@@ -1,0 +1,11 @@
+import time
+
+class FPS:
+    def __init__(self):
+        self.prev_time = time.time()
+
+    def get_fps(self):
+        curr_time = time.time()
+        fps = 1/ (curr_time - self.prev_time)
+        self.prev_time = curr_time
+        return int(fps)
